@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Lexical Analyzer</title>
+</head>
+<body class="container mt-5">
+    <header>
+        <div class="jumbotron">
+            <h1>LEXICAL ANALYZER</h1>
+        </div>
+    </header>
+    <br>
+    <div class="card text-center text-bg-dark mb-3">
+        <h5 class="card-header">Bahasa Melayu</h5>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="masukkan_kalimat" class="form-label">Input kalimat bahasa Melayu (subjek, predikat, dan objek) </label>
+                <input type="text" class="form-control" id="masukkan_kalimat" placeholder="ex: awak suka epal">
+            </div>
+            <button type="button" id="btn-analyze" class="btn btn-outline-light">
+                Analyze
+                <div class="spinner-border text-light spinner-border-sm ms-2" id="loading" style="display: none" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </button>
+            <div class="mb-3 mt-3">
+                <label for="result" class="form-label">Hasil</label>
+                <input type="text" class="form-control" disabled id="result">
+            </div>
+            <button type="button" id="btn-clear" class="btn btn-outline-danger">
+                Clear
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./lexical_analyzer.js"></script>
+</body>
+</html>

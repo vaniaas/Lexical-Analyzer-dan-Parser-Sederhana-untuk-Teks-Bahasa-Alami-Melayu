@@ -5,8 +5,7 @@ import string
 # sentence = 'awak memandu motosikal'
 
 def lexical (sentence):
-    print("Lexical Analyzer")
-    print()
+    print("Lexical Analyzer \n")
     input_string = sentence. lower () + '#'
 
     #initialization
@@ -146,11 +145,114 @@ def lexical (sentence):
         parser(sentence)
 
 def parser(sentence):
-    print("Checking Grammar")
+    print("\n Checking Grammar \n")
 
     tokens = sentence.lower().split()
     tokens.append('EOS')
 
     # Symbols definition
-    non_terminals = ['S', 'SU', 'VB', 'OB']
-    terminals = ['']
+    non_terminals = ['S', 'SB', 'VB', 'OB']
+    terminals = ['awak', 'dia', 'kita', 'makan', 'memandu', 'suka', 'epal', 'kereta', 'motosikal', 'oren']
+
+    # parse table definition
+    parse_table = {}
+
+    parse_table[('S', 'awak')] = ['SB', 'VB', 'OB']
+    parse_table[('S', 'dia')] = ['SB', 'VB', 'OB']
+    parse_table[('S', 'kita')] = ['SB', 'VB', 'OB']
+    parse_table[('S', 'makan')] = ['error']
+    parse_table[('S', 'memandu')] = ['error']
+    parse_table[('S', 'suka')] = ['error']
+    parse_table[('S', 'epal')] = ['error']
+    parse_table[('S', 'kereta')] = ['error']
+    parse_table[('S', 'motosikal')] = ['error']
+    parse_table[('S', 'oren')] = ['error']
+    parse_table[('S', 'EOS')] = ['error']
+
+    parse_table[('SB', 'awak')] = ['awak']
+    parse_table[('SB', 'dia')] = ['dia']
+    parse_table[('SB', 'kita')] = ['kita']
+    parse_table[('SB', 'makan')] = ['error']
+    parse_table[('SB', 'memandu')] = ['error']
+    parse_table[('SB', 'suka')] = ['error']
+    parse_table[('SB', 'epal')] = ['error']
+    parse_table[('SB', 'kereta')] = ['error']
+    parse_table[('SB', 'motosikal')] = ['error']
+    parse_table[('SB', 'oren')] = ['error']
+    parse_table[('SB', 'EOS')] = ['error']
+
+    parse_table[('VB', 'awak')] = ['error']
+    parse_table[('VB', 'dia')] = ['error']
+    parse_table[('VB', 'kita')] = ['error']
+    parse_table[('VB', 'makan')] = ['makan']
+    parse_table[('VB', 'memandu')] = ['memandu']
+    parse_table[('VB', 'suka')] = ['suka']
+    parse_table[('VB', 'epal')] = ['error']
+    parse_table[('VB', 'kereta')] = ['error']
+    parse_table[('VB', 'motosikal')] = ['error']
+    parse_table[('VB', 'oren')] = ['error']
+    parse_table[('VB', 'EOS')] = ['error']
+
+    parse_table[('OB', 'awak')] = ['error']
+    parse_table[('OB', 'dia')] = ['error']
+    parse_table[('OB', 'kita')] = ['error']
+    parse_table[('OB', 'makan')] = ['error']
+    parse_table[('OB', 'memandu')] = ['error']
+    parse_table[('OB', 'suka')] = ['error']
+    parse_table[('OB', 'epal')] = ['epal']
+    parse_table[('OB', 'kereta')] = ['kereta']
+    parse_table[('OB', 'motosikal')] = ['motosikal']
+    parse_table[('OB', 'oren')] = ['oren']
+    parse_table[('OB', 'EOS')] = ['error']
+
+    # stack initialization
+    stack = []
+    stack.append('#')
+    stack.append('S')
+
+    # input remotherng initialization
+    idx_token = 0
+    symbol = tokens[idx_token]
+
+    #parsing process
+    while (len(stack) > 0):
+        top = stack[len(stack)-1]
+        print('top = ', top)
+        print('symbol = ', symbol)
+        if top in terminals:
+            print('top adalah simbol terminal')
+            if top==symbol:
+                stack.pop()
+                idx_token = idx_token + 1
+                symbol = tokens[idx_token]
+                if symbol == 'EOS':
+                    print('isi stack: ', stack)
+                    stack.pop()
+            else:
+                print('error')
+                break;
+        elif top in non_terminals:
+            print('top adalah simbol non-terminal')
+            if parse_table[(top, symbol)][0] != 'error':
+                stack.pop()
+                symbols_to_be_pushed = parse_table[(top, symbol)]
+                for i in range(len(symbols_to_be_pushed)-1,-1,-1):
+                    stack.append(symbols_to_be_pushed[i])
+            else:
+                print('error')
+                break;
+        else:
+            print('error')
+            break;
+        print('isi stack:', stack)
+        print()
+        
+    #conclusion
+    print()
+    if symbol == 'EOS' and len(stack)==0:
+        print('Input string', sentence, 'diterima, sesuai Grammar')
+    else:
+        print('Error, input string: ', sentence, ', tidak diterima, tidak sesuai Grammar')
+
+sentence = input("Input Sentence : ")
+lexical(sentence)

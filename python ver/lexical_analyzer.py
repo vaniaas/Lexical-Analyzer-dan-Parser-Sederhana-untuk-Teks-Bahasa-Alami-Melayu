@@ -151,19 +151,11 @@ def parser(sentence):
     tokens.append('EOS')
 
     # Symbols definition
-<<<<<<< HEAD
     non_terminals = ['S', 'SB', 'VB', 'OB']
     terminals = ['awak', 'dia', 'kita', 'makan', 'memandu', 'suka', 'epal', 'kereta', 'motosikal', 'oren']
 
     # parse table definition
     parse_table = {}
-=======
-    non_terminals = ['S', 'SU', 'VB', 'OB']
-    terminals = ['awak', 'dia', 'kita', 'makan', 'memandu', 'suka', 'epal', 'kereta', 'motosikal', 'oren']
-
-    # parse table definition
-    parse_table = ()
->>>>>>> 1087e8ab15335bdd64e6adfa71b0113dbaf9bc1e
 
     parse_table[('S', 'awak')] = ['SB', 'VB', 'OB']
     parse_table[('S', 'dia')] = ['SB', 'VB', 'OB']
@@ -211,7 +203,6 @@ def parser(sentence):
     parse_table[('OB', 'kereta')] = ['kereta']
     parse_table[('OB', 'motosikal')] = ['motosikal']
     parse_table[('OB', 'oren')] = ['oren']
-<<<<<<< HEAD
     parse_table[('OB', 'EOS')] = ['error']
 
     # stack initialization
@@ -265,6 +256,3 @@ def parser(sentence):
 
 sentence = input("Input Sentence : ")
 lexical(sentence)
-=======
-    parse_table[('OB', 'EOS')] = ['error']
->>>>>>> 1087e8ab15335bdd64e6adfa71b0113dbaf9bc1e

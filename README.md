@@ -1,6 +1,9 @@
 # Lexical-Analyzer-dan-Parser-Sederhana-untuk-Teks-Bahasa-Alami-Melayu
 Mendefinisikan sebuah Context Free Grammar (CFG) yang merepresentasikan aturan bahasa sederhana untuk bahasa manusia.
 
+Risma Amaliyah Mahmudah (1301204087)
+Vania Amadea (1301204365)
+
 ===== JavaScript, HTML, dan CSS =====
 
 ![image](https://user-images.githubusercontent.com/81515772/173858171-1310f49d-832c-4720-8d94-94c5107ca3f8.png)

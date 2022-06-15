@@ -4,12 +4,6 @@ var hasil = document.getElementById('result');
 var clear = document.getElementById('btn-clear');
 var loading = document.getElementById('loading');
 
-//input example
-//var input_string;
-//var sentence;
-//sentence = 'awak memandu motosikal';
-//input_string = sentence.lower () + '#';
-
 function lexical(masukkan){
     //initialization
     var state_list, transition_table;
@@ -174,16 +168,15 @@ function lexical(masukkan){
 }
 function parser(sentence){
     sentence = sentence.replace(/\s+/g, ' ').trim()
-
     var tokens = sentence.toLowerCase().split(' ');
 
     tokens.push('EOS')
     console.log('tokens: ', tokens)
-
+    
     //Symbols definition
     non_terminals = ['S', 'SB', 'VB', 'OB'];
     terminals = ['awak', 'dia', 'kita', 'makan', 'memandu', 'suka', 'epal', 'kereta', 'motosikal', 'oren'];
-   
+    
     //parse table definition
     var parse_table = {};
 

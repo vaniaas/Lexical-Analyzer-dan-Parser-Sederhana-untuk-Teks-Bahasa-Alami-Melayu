@@ -7,3 +7,10 @@
     color: black;
     font-family: 'Josefin Sans', sans-serif;
 }
+footer {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    padding: 1px;
+    position: sticky;
+    top: 0;
+}
